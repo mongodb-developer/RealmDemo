@@ -44,7 +44,6 @@ class Repo {
         Realm.open(configuration = configuration)
     }
 
-
     suspend fun doAppSignIn() {
         withContext(Dispatchers.Default) {
             appDataService.login(Credentials.anonymous())
@@ -66,15 +65,13 @@ class Repo {
         }
     }
 
-    suspend fun getUsersAsFlow(): CommonFlow<List<User>> {
-        return withContext(Dispatchers.Default) {
-            realm.query(clazz = User::class).asFlow().map {
-                when (it) {
-                    is InitialResults -> TODO()
-                    is UpdatedResults -> TODO()
-                }
-            }.asCommonFlow()
-        }
+    fun getUsersAsFlow(): CommonFlow<List<User>> {
+        return realm.query(clazz = User::class).asFlow().map {
+            when (it) {
+                is InitialResults -> it.list
+                is UpdatedResults -> it.list
+            }
+        }.asCommonFlow()
     }
 
     suspend fun getUsersAsList(): List<User> {
