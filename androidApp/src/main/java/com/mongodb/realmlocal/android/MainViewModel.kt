@@ -13,20 +13,20 @@ class MainViewModel : ViewModel() {
     private val realmRepo = Repo()
 
     val users: LiveData<List<User>> = liveData {
-        emitSource(realmRepo.getUsersAsFlow().flowOn(Dispatchers.IO).asLiveData(Dispatchers.Main))
+        emitSource(realmRepo.getUsersAsFlow().asLiveData(Dispatchers.Main))
     }
 
     //val users: MutableLiveData<List<User>> = MutableLiveData()
 
 
     fun saveUserInfo(user: User) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             realmRepo.saveUserInfo(user)
         }
     }
 
     fun getUsers() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             val list = realmRepo.getUsersAsList()
             withContext(Dispatchers.Main) {
               //  users.value = list
