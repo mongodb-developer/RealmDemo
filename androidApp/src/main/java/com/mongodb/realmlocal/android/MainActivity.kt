@@ -175,7 +175,7 @@ fun Container(topPadding: Dp) {
             onClick = {
                 homeVM.getUsers()
             }) {
-            Text(text = "Get Latest")
+            Text(text = "Pull to get Latest")
         }
 
         Divider(color = Color.Black)
