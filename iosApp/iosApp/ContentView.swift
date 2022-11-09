@@ -12,16 +12,20 @@ struct ContentView: View {
             TextField("Your Name", text: $vm.name)
                 .textFieldStyle(.roundedBorder)
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-            
+                .autocorrectionDisabled(false)
+
             TextField("Your Handle",text: $vm.twitterHandle)
                 .textFieldStyle(.roundedBorder)
                 .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-            
+                .autocorrectionDisabled(false)
+
             Button("Save") {
                 let info = User()
                 info.name = vm.name
                 info.twitterHandle = vm.twitterHandle
                 vm.saveUser(user: info)
+                vm.twitterHandle = ""
+                vm.name = ""
             }
             .padding(10)
             .overlay(
