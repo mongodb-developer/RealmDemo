@@ -1,5 +1,5 @@
 # RealmDemo
-Demo application demostrating how to share data layer in an KMM project using Realm Kotlin SDK and Atlas App Service. In application we collection user name and his twitter handle. 
+Demo application demostrating how to share data layer in an KMM project using Realm Kotlin SDK and Atlas App Service. In this application we collect the user name and his twitter handle. 
 
 Webinar Link : https://www.youtube.com/watch?v=J3hDZ7PTBSk
 
